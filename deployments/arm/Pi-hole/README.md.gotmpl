@@ -1,17 +1,13 @@
-# pihole
+{{ template "chart.header" . }}
+{{ template "chart.description" . }}
 
-Installs pihole in kubernetes
-
-![Version: 1.8.29](https://img.shields.io/badge/Version-1.8.29-informational?style=flat-square) ![AppVersion: 5.2.4](https://img.shields.io/badge/AppVersion-5.2.4-informational?style=flat-square) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+{{ template "chart.versionBadge" .  }}{{ template "chart.typeBadge" .  }}{{ template "chart.appVersionBadge" .  }}<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-27-blue.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-## Source Code
+{{ template "chart.sourcesSection" . }}
 
-* <https://github.com/MoJo2600/pihole-kubernetes/tree/master/charts/pihole>
-* <https://pi-hole.net/>
-* <https://github.com/pi-hole>
-* <https://github.com/pi-hole/docker-pi-hole>
+{{ template "chart.requirementsSection" . }}
 
 ## Installation
 
@@ -98,7 +94,7 @@ Version 1.8.22 has switched from the deprecated ingress api `extensions/v1beta1`
             backend:
               service:
                 name: \{\{ $serviceName \}\}
-                port:
+                port: 
                   name: http
 ```
 to:
@@ -120,90 +116,9 @@ helm delete --purge my-release
 
 The following table lists the configurable parameters of the pihole chart and the default values.
 
-## Values
+{{ template "chart.valuesSection" . }}
 
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| DNS1 | string | `"8.8.8.8"` |  |
-| DNS2 | string | `"8.8.4.4"` |  |
-| adlists | object | `{}` |  |
-| admin.existingSecret | string | `""` |  |
-| admin.passwordKey | string | `"password"` |  |
-| adminPassword | string | `"admin"` |  |
-| affinity | object | `{}` |  |
-| antiaff.avoidRelease | string | `"pihole1"` |  |
-| antiaff.enabled | bool | `false` |  |
-| antiaff.strict | bool | `true` |  |
-| blacklist | object | `{}` |  |
-| customVolumes.config | object | `{}` |  |
-| customVolumes.enabled | bool | `false` |  |
-| dnsmasq.additionalHostsEntries | list | `[]` |  |
-| dnsmasq.customDnsEntries | list | `[]` |  |
-| dnsmasq.staticDhcpEntries | list | `[]` |  |
-| dnsmasq.upstreamServers | list | `[]` |  |
-| doh.enabled | bool | `false` |  |
-| doh.envVars | object | `{}` |  |
-| doh.name | string | `"cloudflared"` |  |
-| doh.probes.liveness.enabled | bool | `true` |  |
-| doh.probes.liveness.failureThreshold | int | `10` |  |
-| doh.probes.liveness.initialDelaySeconds | int | `60` |  |
-| doh.probes.liveness.timeoutSeconds | int | `5` |  |
-| doh.pullPolicy | string | `"IfNotPresent"` |  |
-| doh.repository | string | `"crazymax/cloudflared"` |  |
-| doh.tag | string | `"latest"` |  |
-| extraEnvVars | object | `{}` |  |
-| extraEnvVarsSecret | object | `{}` |  |
-| hostNetwork | string | `"false"` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"pihole/pihole"` |  |
-| image.tag | string | `"v5.5.1"` |  |
-| ingress.annotations | object | `{}` |  |
-| ingress.enabled | bool | `false` |  |
-| ingress.hosts[0] | string | `"chart-example.local"` |  |
-| ingress.path | string | `"/"` |  |
-| ingress.tls | list | `[]` |  |
-| maxSurge | int | `1` |  |
-| maxUnavailable | int | `1` |  |
-| monitoring.podMonitor.enabled | bool | `false` |  |
-| monitoring.sidecar.enabled | bool | `false` |  |
-| monitoring.sidecar.image.pullPolicy | string | `"IfNotPresent"` |  |
-| monitoring.sidecar.image.repository | string | `"ekofr/pihole-exporter"` |  |
-| monitoring.sidecar.image.tag | string | `"0.0.10"` |  |
-| monitoring.sidecar.port | int | `9617` |  |
-| monitoring.sidecar.resources.limits.memory | string | `"128Mi"` |  |
-| nodeSelector | object | `{}` |  |
-| persistentVolumeClaim.accessModes[0] | string | `"ReadWriteOnce"` |  |
-| persistentVolumeClaim.annotations | object | `{}` |  |
-| persistentVolumeClaim.enabled | bool | `false` |  |
-| persistentVolumeClaim.size | string | `"500Mi"` |  |
-| privileged | string | `"false"` |  |
-| probes.liveness | object | `{"enabled":true,"failureThreshold":10,"initialDelaySeconds":60,"timeoutSeconds":5}` | Configure the healthcheck for the doh container |
-| probes.readiness.enabled | bool | `true` |  |
-| probes.readiness.failureThreshold | int | `3` |  |
-| probes.readiness.initialDelaySeconds | int | `60` |  |
-| probes.readiness.timeoutSeconds | int | `5` |  |
-| regex | object | `{}` |  |
-| replicaCount | int | `1` |  |
-| resources | object | `{}` |  |
-| serviceDns.annotations | object | `{}` |  |
-| serviceDns.externalTrafficPolicy | string | `"Local"` |  |
-| serviceDns.loadBalancerIP | string | `""` |  |
-| serviceDns.type | string | `"NodePort"` |  |
-| serviceWeb.annotations | object | `{}` |  |
-| serviceWeb.externalTrafficPolicy | string | `"Local"` |  |
-| serviceWeb.loadBalancerIP | string | `""` |  |
-| serviceWeb.type | string | `"ClusterIP"` |  |
-| tolerations | list | `[]` |  |
-| virtualHost | string | `"pi.hole"` |  |
-| webHttp | string | `"80"` |  |
-| webHttps | string | `"443"` |  |
-| whitelist | object | `{}` |  |
-
-## Maintainers
-
-| Name | Email | Url |
-| ---- | ------ | --- |
-| MoJo2600 | christian.erhardt@mojo2k.de |  |
+{{ template "chart.maintainersSection" . }}
 
 ## Remarks
 
@@ -224,6 +139,7 @@ MetalLB 0.7.3 has a bug, where the service is not announced anymore, when the po
 Feel free to contribute by making a [pull request](https://github.com/MoJo2600/pihole-kubernetes/pull/new/master).
 
 Please read [Contribution Guide](CONTRIBUTING.md) for more information on how you can contribute to this Chart.
+
 
 ## Contributors ✨
 
@@ -278,5 +194,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
-----------------------------------------------
-Autogenerated from chart metadata using [helm-docs v1.5.0](https://github.com/norwoodj/helm-docs/releases/v1.5.0)
+{{ template "helm-docs.versionFooter" . }}
