@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mtt
+  name: mqtt
   labels:
     app: mqtt
 spec:
