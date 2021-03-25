@@ -37,10 +37,10 @@ spec:
       volumes:
         - name: mqtt-data
           persistentVolumeClaim:
-            claimName: local-path-pvc
+            claimName: local-path
         - name: mqtt-log
           persistentVolumeClaim:
-            claimName: local-path-pvc
+            claimName: local-path
         - name: mqtt-config
           persistentVolumeClaim:
-             claimName: local-path-pvc
+             claimName: local-path
