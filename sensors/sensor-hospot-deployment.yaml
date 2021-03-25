@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: busybox1
+  name: mtt
   labels:
-    app: busybox1
+    app: mqtt
 spec:
   containers:
   - image: busybox
