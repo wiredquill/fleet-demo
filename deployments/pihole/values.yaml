@@ -1,4 +1,4 @@
-# Default values for pihole.
+b# Default values for pihole.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -75,7 +75,7 @@ resources: {}
 
 persistentVolumeClaim:
   # set to true to use pvc
-  enabled: false
+  enabled: true
   # set to true to use you own pvc
   # existingClaim: myExistingClaim
   annotations: {}
