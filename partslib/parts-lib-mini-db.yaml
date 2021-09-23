@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mini-db
+  name: parts-lib-mini-db
   labels:
-    app: mini-db
+    app: parts-lib-mini-db
 spec:
   containers:
   - image: busybox
