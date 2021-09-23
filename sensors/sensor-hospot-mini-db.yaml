@@ -9,7 +9,7 @@ spec:
   - image: busybox
     command:
       - sleep
-      - "3600"
+      - "3500"
     imagePullPolicy: IfNotPresent
     name: busybox
   restartPolicy: Always
