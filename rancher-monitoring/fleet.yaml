@@ -1,0 +1,9 @@
+# rancher-monitoring/fleet.yaml
+defaultNamespace: cattle-monitoring-system
+releaseName: rancher-monitoring
+helm:
+  chart: rancher-monitoring
+  repo: https://charts.rancher.io
+  version: <version_number> # Replace with the version you want, e.g., 100.1.0+up19.0.3
+  valuesFiles:
+    - values.yaml

@@ -1,0 +1,22 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: palace-arcade
+  labels:
+    app: palace-arcade
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: palace-arcade
+  template:
+    metadata:
+      labels:
+        app: palace-arcade
+    spec:
+      containers:
+      - name: palace-arcade-container
+        image: scarolan/palacearcade # Replace this with the desired Docker image
+        ports:
+        - containerPort: 80
